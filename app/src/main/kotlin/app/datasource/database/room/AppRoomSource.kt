@@ -27,12 +27,7 @@ class AppRoomSource(
             .build()
     }
 
-    /**
-     * Retrieves the UserDao for interacting with the User entity.
-     *
-     * @return The UserDao instance.
-     */
-    val userDao by lazy { db.getUserDao() }
+    val taskDao by lazy { db.getTaskDao() }
 
     /**
      * Executes a transaction on the database.
