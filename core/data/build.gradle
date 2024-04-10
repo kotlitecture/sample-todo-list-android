@@ -1,0 +1,10 @@
+apply from: "${project.rootDir}/gradle/android/library.gradle"
+
+android {
+    namespace = "core.data"
+}
+
+dependencies {
+    api libs.bundles.kotlinEssentials
+    testImplementation project(":core:testing")
+}

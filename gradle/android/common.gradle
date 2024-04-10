@@ -1,0 +1,76 @@
+apply plugin: "org.jetbrains.kotlin.plugin.serialization"
+apply plugin: "org.jetbrains.kotlin.android"
+
+configurations {
+    releaseImplementation
+    stagingImplementation
+    debugImplementation
+    releaseApi
+    stagingApi
+    debugApi
+}
+
+dependencies {
+    implementation platform(libs.androidx.compose.bom)
+    coreLibraryDesugaring libs.android.desugar
+    implementation libs.bundles.androidCommon
+    debugApi libs.androidx.compose.ui.tooling
+    androidTestImplementation libs.kotlin.test
+    testImplementation libs.kotlin.test
+}
+
+android {
+    compileSdkVersion libs.versions.androidMaxSdkVersion.get().toInteger()
+
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        coreLibraryDesugaringEnabled true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion libs.versions.androidxComposeCompiler.get()
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+    }
+
+    defaultConfig {
+        minSdkVersion libs.versions.androidMinSdkVersion.get().toInteger()
+        targetSdkVersion libs.versions.androidMaxSdkVersion.get().toInteger()
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    packagingOptions {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            excludes.add("/META-INF/versions/**")
+            pickFirsts.add("tinylog.properties")
+        }
+    }
+
+    lint {
+        quiet = true
+        abortOnError = false
+        ignoreWarnings = true
+        checkReleaseBuilds false
+        checkDependencies = false
+    }
+}

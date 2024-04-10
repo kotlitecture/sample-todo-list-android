@@ -1,0 +1,5 @@
+apply from: "${project.rootDir}/gradle/android/library.gradle"
+
+android {
+    namespace = "core.ui"
+}

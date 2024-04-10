@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.room) apply false
+    alias(libs.plugins.android.test) apply false
+    alias(libs.plugins.google.hilt) apply false
+    alias(libs.plugins.google.ksp) apply false
+    alias(libs.plugins.kotlin.serialization) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.version.catalog.versions) apply true
+    alias(libs.plugins.version.catalog.update) apply true
+}
+
+tasks.register('cleanAll') {
+    doLast {
+        def dirs = []
+        project.rootDir.eachDirRecurse { dir ->
+            if (dir.getName() == "build" && dir.parentFile.listFiles().any { it.getName().startsWith("build.gradle") }) {
+                if(!dirs.any { it.path.startsWith(dir.path) }) {
+                    println("delete dir >> ${dir}")
+                    dirs.add(dir)
+                }
+            }
+        }
+        delete(dirs)
+    }
+}
+
+versionCatalogUpdate {
+    sortByKey = true
+    keep {
+        keepUnusedPlugins = true
+        keepUnusedVersions = true
+        keepUnusedLibraries = true
+    }
+}

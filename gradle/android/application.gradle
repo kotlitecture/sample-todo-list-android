@@ -1,0 +1,13 @@
+apply plugin: "com.android.application"
+apply plugin: "com.google.devtools.ksp"
+apply plugin: "dagger.hilt.android.plugin"
+apply from: "${project.rootDir}/gradle/android/common.gradle"
+
+dependencies {
+    implementation libs.google.hilt.android
+    implementation libs.androidx.hilt.navigation.compose
+    ksp libs.google.hilt.android.compiler
+    kspTest libs.google.hilt.android.compiler
+    kspAndroidTest libs.google.hilt.android.compiler
+    testImplementation libs.google.hilt.android.testing
+}

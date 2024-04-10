@@ -1,0 +1,70 @@
+apply from: "${project.rootDir}/gradle/android/application.gradle"
+apply plugin: "androidx.room"
+
+dependencies {
+    ksp libs.androidx.room.compiler
+    implementation project(":core:ui")
+    implementation project(":core:data")
+    implementation libs.tinylog.api
+    implementation libs.tinylog.impl
+    implementation libs.tinylog.slf4j
+    implementation libs.androidx.core.splashscreen
+    implementation libs.androidx.room.runtime
+    implementation libs.androidx.room.paging
+    implementation libs.androidx.room.ktx
+    testImplementation libs.androidx.room.testing
+    testImplementation project(":core:testing")
+}
+
+android {
+    namespace = "app"
+    room {
+        schemaDirectory "$projectDir/room-schemas"
+    }
+    defaultConfig {
+        applicationId = "kotli.samples.todolist"
+        versionName = System.getProperty("versionNameExt") ?: "0.0.1"
+        versionCode = (System.getProperty("versionCodeExt") ?: "1").toInteger()
+    }
+    signingConfigs {
+        register("staging") {
+            storeFile = file("assemble/staging.keystore")
+            keyAlias = "androiddebugkey"
+            storePassword = "android"
+            keyPassword = "android"
+        }
+        release {
+            storeFile = file("assemble/release.keystore")
+            keyAlias = "androidreleasekey"
+            storePassword = "android"
+            keyPassword = "android"
+        }
+    }
+    buildTypes {
+        named("debug") {
+            signingConfig signingConfigs.getByName("staging")
+            applicationIdSuffix = ".debug"
+            debuggable true
+        }
+        register("staging") {
+            initWith(debug)
+            matchingFallbacks.add("debug")
+            signingConfig signingConfigs.getByName("staging")
+            applicationIdSuffix = ".staging"
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        named("release") {
+            signingConfig signingConfigs.getByName("release")
+            applicationIdSuffix = ""
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+    }
+}
+
+

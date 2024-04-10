@@ -1,0 +1,9 @@
+apply plugin: "org.jetbrains.kotlin.jvm"
+
+dependencies {
+    testImplementation libs.bundles.kotlinTest
+}
+
+test {
+    useJUnitPlatform()
+}
