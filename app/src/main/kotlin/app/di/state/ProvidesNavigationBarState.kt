@@ -1,21 +1,23 @@
 package app.di.state
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Coffee
-import androidx.compose.material.icons.filled.LocalDrink
-import androidx.compose.material.icons.filled.School
-import androidx.compose.material.icons.filled.WineBar
-import androidx.compose.material.icons.outlined.Coffee
-import androidx.compose.material.icons.outlined.LocalDrink
-import androidx.compose.material.icons.outlined.School
-import androidx.compose.material.icons.outlined.WineBar
+import androidx.compose.material.icons.automirrored.filled.Assignment
+import androidx.compose.material.icons.automirrored.outlined.Assignment
+import androidx.compose.material.icons.filled.AssignmentTurnedIn
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.outlined.AssignmentTurnedIn
+import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.runtime.Composable
-import app.showcases.ShowcasesDestination
+import androidx.compose.ui.res.stringResource
+import app.R
 import app.ui.navigation.NavigationBarPage
 import app.ui.navigation.NavigationBarState
-import app.userflow.navigation.a.NavigationADestination
-import app.userflow.navigation.b.NavigationBDestination
-import app.userflow.navigation.c.NavigationCDestination
+import app.userflow.settings.SettingsDestination
+import app.userflow.task.active.ActiveTasksDestination
+import app.userflow.task.completed.CompletedTasksDestination
+import app.userflow.task.search.SearchTasksDestination
 import core.ui.navigation.NavigationDestination
 import core.ui.navigation.NavigationState
 import core.ui.navigation.NavigationStrategy
@@ -35,31 +37,31 @@ internal class ProvidesNavigationBarState {
         pages = listOf(
             createPage(
                 navigationState = navigationState,
-                destination = ShowcasesDestination,
-                getActiveIcon = { Icons.Filled.School },
-                getInactiveIcon = { Icons.Outlined.School },
-                getLabel = { "Showcases" }
+                destination = ActiveTasksDestination,
+                getActiveIcon = { Icons.AutoMirrored.Filled.Assignment },
+                getInactiveIcon = { Icons.AutoMirrored.Outlined.Assignment },
+                getLabel = { stringResource(R.string.navigation_active) }
             ),
             createPage(
                 navigationState = navigationState,
-                destination = NavigationADestination,
-                getActiveIcon = { Icons.Filled.WineBar },
-                getInactiveIcon = { Icons.Outlined.WineBar },
-                getLabel = { "Page 1" }
+                destination = CompletedTasksDestination,
+                getActiveIcon = { Icons.Filled.AssignmentTurnedIn },
+                getInactiveIcon = { Icons.Outlined.AssignmentTurnedIn },
+                getLabel = { stringResource(R.string.navigation_completed) }
             ),
             createPage(
                 navigationState = navigationState,
-                destination = NavigationBDestination,
-                getActiveIcon = { Icons.Filled.LocalDrink },
-                getInactiveIcon = { Icons.Outlined.LocalDrink },
-                getLabel = { "Page 2" }
+                destination = SearchTasksDestination,
+                getActiveIcon = { Icons.Filled.Search },
+                getInactiveIcon = { Icons.Outlined.Search },
+                getLabel = { stringResource(R.string.navigation_search) }
             ),
             createPage(
                 navigationState = navigationState,
-                destination = NavigationCDestination,
-                getActiveIcon = { Icons.Filled.Coffee },
-                getInactiveIcon = { Icons.Outlined.Coffee },
-                getLabel = { "Page 3" }
+                destination = SettingsDestination,
+                getActiveIcon = { Icons.Filled.Settings },
+                getInactiveIcon = { Icons.Outlined.Settings },
+                getLabel = { stringResource(R.string.navigation_settings) }
             )
         )
     )

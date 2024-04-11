@@ -1,4 +1,4 @@
-package app.userflow.navigation.b
+package app.userflow.task.active
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import app.provideHiltViewModel
 
 @Composable
-fun NavigationBScreen(data: NavigationBDestination.Data?) {
-    val viewModel: NavigationBViewModel = provideHiltViewModel()
+fun ActiveTasksScreen() {
+    val viewModel: ActiveTasksViewModel = provideHiltViewModel()
     Box(Modifier.fillMaxSize()) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = "B"
+            text = "Active Tasks"
         )
     }
 }

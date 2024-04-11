@@ -1,4 +1,4 @@
-package app.userflow.navigation.a
+package app.userflow.settings
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import app.provideHiltViewModel
 
 @Composable
-fun NavigationAScreen(data: NavigationADestination.Data?) {
-    val viewModel: NavigationAViewModel = provideHiltViewModel()
+fun SettingsScreen() {
+    val viewModel: SettingsViewModel = provideHiltViewModel()
     Box(Modifier.fillMaxSize()) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = "A"
+            text = "Settings"
         )
     }
 }

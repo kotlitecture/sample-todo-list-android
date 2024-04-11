@@ -1,6 +1,6 @@
 package app
 
-import app.showcases.ShowcasesDestination
+import app.userflow.task.active.ActiveTasksDestination
 import core.ui.BaseViewModel
 import core.ui.navigation.NavigationState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +20,7 @@ class AppViewModel @Inject constructor(
 
     override fun doBind() {
         launchAsync("doBind") {
-            navigationState.setStartDestination(ShowcasesDestination)
+            navigationState.setStartDestination(ActiveTasksDestination)
         }
     }
 

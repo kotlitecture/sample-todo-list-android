@@ -1,4 +1,4 @@
-package app.userflow.navigation.a
+package app.userflow.task.active
 
 import app.AppState
 import core.ui.BaseViewModel
@@ -7,7 +7,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class NavigationAViewModel @Inject constructor(
+class ActiveTasksViewModel @Inject constructor(
     private val navigationState: NavigationState,
     private val appState: AppState
-) : BaseViewModel()
+) : BaseViewModel() {
+
+    fun onBack() {
+        navigationState.onBack()
+    }
+
+}

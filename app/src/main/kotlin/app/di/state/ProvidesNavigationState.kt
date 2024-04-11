@@ -2,9 +2,10 @@ package app.di.state
 
 import app.showcases.ShowcasesDestination
 import app.ui.screen.template.TemplateDestination
-import app.userflow.navigation.a.NavigationADestination
-import app.userflow.navigation.b.NavigationBDestination
-import app.userflow.navigation.c.NavigationCDestination
+import app.userflow.settings.SettingsDestination
+import app.userflow.task.active.ActiveTasksDestination
+import app.userflow.task.completed.CompletedTasksDestination
+import app.userflow.task.search.SearchTasksDestination
 import app.userflow.theme.change.ChangeThemeDestination
 import app.userflow.theme.change.ChangeThemeDialogDestination
 import core.ui.navigation.NavigationState
@@ -24,9 +25,10 @@ internal class ProvidesNavigationState {
         destinations = listOf(
             ShowcasesDestination,
             TemplateDestination,
-            NavigationADestination,
-            NavigationBDestination,
-            NavigationCDestination,
+            ActiveTasksDestination,
+            CompletedTasksDestination,
+            SearchTasksDestination,
+            SettingsDestination,
             ChangeThemeDestination,
             ChangeThemeDialogDestination
         )

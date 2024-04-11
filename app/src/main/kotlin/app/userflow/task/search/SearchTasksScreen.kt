@@ -1,4 +1,4 @@
-package app.userflow.navigation.c
+package app.userflow.task.search
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,12 +9,12 @@ import androidx.compose.ui.Modifier
 import app.provideHiltViewModel
 
 @Composable
-fun NavigationCScreen(data: NavigationCDestination.Data?) {
-    val viewModel: NavigationCViewModel = provideHiltViewModel()
+fun SearchTasksScreen() {
+    val viewModel: SearchTasksViewModel = provideHiltViewModel()
     Box(Modifier.fillMaxSize()) {
         Text(
             modifier = Modifier.align(Alignment.Center),
-            text = "C"
+            text = "Search Tasks"
         )
     }
 }
