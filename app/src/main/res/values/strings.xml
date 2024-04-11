@@ -20,4 +20,5 @@
     <string name="task_list_loading">Loading tasks…</string>
     <string name="task_list_empty">No tasks found</string>
     <string name="task_list_new">New task</string>
+    <string name="task_list_completed">Completed</string>
 </resources>
