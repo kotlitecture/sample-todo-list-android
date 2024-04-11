@@ -1,20 +1,20 @@
 package app.userflow.settings
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import app.provideHiltViewModel
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import app.R
+import app.ui.container.FixedTopBarColumnLayout
+import app.userflow.theme.change.ChangeThemeLayout
 
 @Composable
 fun SettingsScreen() {
-    val viewModel: SettingsViewModel = provideHiltViewModel()
-    Box(Modifier.fillMaxSize()) {
-        Text(
-            modifier = Modifier.align(Alignment.Center),
-            text = "Settings"
-        )
-    }
+    FixedTopBarColumnLayout(
+        title = stringResource(R.string.settings),
+        content = {
+            ChangeThemeLayout(modifier = Modifier.padding(16.dp))
+        }
+    )
 }
