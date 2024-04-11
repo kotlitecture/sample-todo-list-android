@@ -16,4 +16,7 @@
     <string name="navigation_settings">Settings</string>
 
     <string name="settings">Settings</string>
+
+    <string name="task_list_loading">Loading tasks…</string>
+    <string name="task_list_empty">No tasks found</string>
 </resources>
