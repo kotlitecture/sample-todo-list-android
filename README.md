@@ -1,3 +1,5 @@
+Sample project, created step-by-step while writing this [Medium Article](https://medium.com/@kotlitecture/kotlin-and-kotli-effortless-app-development-cooking-android-18f666c9ba70).
+
 # About
 
 Layer template: https://github.com/kotlitecture/template-android-compose
